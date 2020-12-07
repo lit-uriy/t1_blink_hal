@@ -32,6 +32,8 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+static GPIO_InitTypeDef  GPIO_InitStruct;
+
 /* Private function prototypes -----------------------------------------------*/
 static void SystemClock_Config(void);
 static void Error_Handler(void);
@@ -59,15 +61,24 @@ int main(void)
 
   /* Configure the system clock to have a system clock = 48 Mhz */
   SystemClock_Config();
+  
+  /* -1- Разрешим тактирование порта A (светодиод сидит на порте A) */
+  __HAL_RCC_GPIOA_CLK_ENABLE();
 
+  /* -2- Настраиваем ножку контроллера, к которой подключен светодиод: Выход, push-pull */
+  GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull  = GPIO_PULLUP; // <-- нахрена, если и так push-pull?
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; // <-- нахрена, если эсли это маргалка герцовой частоты?
+  GPIO_InitStruct.Pin = LED2_PIN;
 
-  /* Add your application code here
-     */
+  HAL_GPIO_Init(LED2_GPIO_PORT, &GPIO_InitStruct);
 
-
-  /* Infinite loop */
+  /* -3- Бесконечно переключаем светодиод */
   while (1)
   {
+    HAL_GPIO_TogglePin(LED2_GPIO_PORT, LED2_PIN);
+    /* задержка 100 ms */
+    HAL_Delay(100);
   }
 }
 
