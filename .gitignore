@@ -1,0 +1,17 @@
+# Keil
+*.uvguix.*
+*.uvgui.*
+*.lst
+*.uvopt
+*.uvoptx
+DebugConfig/
+# Keil STM32
+RTE/
+BUILD/
+*.d
+*.[oa]
+# Qt Creator
+*.user
+*.user.*
+*.cxxflags
+*.cflags
