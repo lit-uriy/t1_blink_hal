@@ -119,11 +119,13 @@ static void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /* Select PLL as system clock source and configure the HCLK, PCLK1 clocks dividers */
-  RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1);
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  /* Установим system clock source = PLL и настроим предделители HCLK, PCLK1 */
+  RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1);  // какой тип тактирования настраиваем
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;     // Источник тактирования для SYSCLK (HSI, HSE или PLL для STM32F070RB)
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;            // Предделитель AHB (HCLK, ядро) = 1
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;             // Предделитель APB (PCLK1, периферия) = 1
+
+  // Применяем конфигурацию тактовых сигналов и циклов ожидания записи/стирания Flash-памяти
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1)!= HAL_OK)
   {
     Error_Handler();
