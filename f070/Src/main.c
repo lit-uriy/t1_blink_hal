@@ -102,14 +102,18 @@ static void SystemClock_Config(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_OscInitTypeDef RCC_OscInitStruct;
   
-  /* No HSE Oscillator on Nucleo, Activate PLL with HSI as source */
+  /* На Nucleo не запаян кварц для HSE, поэтому активируем PLL с HSI в качестве источника */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState          = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue  = RCC_HSICALIBRATION_DEFAULT;  
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PREDIV = RCC_PREDIV_DIV1;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
+  RCC_OscInitStruct.HSICalibrationValue  = RCC_HSICALIBRATION_DEFAULT;
+
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;          // PLL: включен
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;  // Источник тактов для PLL: HSI
+  RCC_OscInitStruct.PLL.PREDIV = RCC_PREDIV_DIV1;       // Предделитель PLL = 1
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;          // Умножение частоты на выходе PLL = 6
+
+  // Применяем конфигурацию генератора
+  //    Здесь идёт ожидание RCC_FLAG_HSIRDY и RCC_FLAG_PLLRDY
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct)!= HAL_OK)
   {
     Error_Handler();
