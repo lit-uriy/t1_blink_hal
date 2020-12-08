@@ -32,7 +32,6 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-static GPIO_InitTypeDef  GPIO_InitStruct;
 
 /* Private function prototypes -----------------------------------------------*/
 static void SystemClock_Config(void);
@@ -66,6 +65,7 @@ int main(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /* -2- Настраиваем ножку контроллера, к которой подключен светодиод: Выход, push-pull */
+  GPIO_InitTypeDef  GPIO_InitStruct;
   GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull  = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; // до 2 МГц
