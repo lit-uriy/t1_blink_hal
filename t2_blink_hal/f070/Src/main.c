@@ -67,8 +67,8 @@ int main(void)
 
   /* -2- Настраиваем ножку контроллера, к которой подключен светодиод: Выход, push-pull */
   GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull  = GPIO_PULLUP; // <-- нахрена, если и так push-pull?
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; // <-- нахрена, если эсли это маргалка герцовой частоты?
+  GPIO_InitStruct.Pull  = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; // до 2 МГц
   GPIO_InitStruct.Pin = LED2_PIN;
 
   HAL_GPIO_Init(LED2_GPIO_PORT, &GPIO_InitStruct);
