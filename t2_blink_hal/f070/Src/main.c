@@ -56,7 +56,7 @@ int main(void)
          handled in milliseconds basis.
        - Low Level Initialization
      */
-  HAL_Init();
+  HAL_Init(); // здесь вызывается HAL_MspInit() из system_stm32f0xx.c
 
   /* Configure the system clock to have a system clock = 48 Mhz */
   SystemClock_Config();
