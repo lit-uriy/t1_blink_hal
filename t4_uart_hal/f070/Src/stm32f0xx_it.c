@@ -101,7 +101,7 @@ void SysTick_Handler(void)
 /*  file (startup_stm32f0xx.s).                                               */
 /******************************************************************************/
 /**
-  * @brief  This function handles UART interrupt request.  
+  * @brief  Это обработчик прерывания UART.
   * @param  None
   * @retval None
   * @Note   This function is redefined in "main.h" and related to DMA  
@@ -113,7 +113,7 @@ void USARTx_IRQHandler(void)
 }
 
 /**
-  * @brief  This function handles external line 4_15 interrupt request.
+  * @brief  Это обработчик прерывания EXTI линий с 4-ой по 15-ую
   * @param  None
   * @retval None
   */
