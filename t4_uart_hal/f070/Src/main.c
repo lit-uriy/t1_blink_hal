@@ -43,7 +43,7 @@ __IO ITStatus UartReady = RESET;
 __IO uint32_t UserButtonStatus = 0;  /* set to 1 after User Button interrupt  */
 
 /* Buffer used for transmission */
-uint8_t aTxBuffer[] = " ****UART_TwoBoards_ComIT****  ****UART_TwoBoards_ComIT****  ****UART_TwoBoards_ComIT**** ";
+uint8_t aTxBuffer[] = "****UART_TwoBoards_ComIT****\r\n****UART_TwoBoards_ComIT****\r\n****UART_TwoBoards_ComIT****\r\n";
 
 /* Buffer used for reception */
 uint8_t aRxBuffer[RXBUFFERSIZE];
