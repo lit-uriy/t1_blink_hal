@@ -33,7 +33,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-//#define TRANSMITTER_BOARD
+#define TRANSMITTER_BOARD
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
@@ -96,11 +96,11 @@ int main(void)
   UartHandle.Init.HwFlowCtl  = UART_HWCONTROL_NONE;
   UartHandle.Init.Mode       = UART_MODE_TX_RX;
   UartHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT; 
-  if(HAL_UART_DeInit(&UartHandle) != HAL_OK)
+  if(HAL_UART_DeInit(&UartHandle) != HAL_OK) // в т.ч. запрет прерывания и только по передаче
   {
     Error_Handler();
   }  
-  if(HAL_UART_Init(&UartHandle) != HAL_OK)
+  if(HAL_UART_Init(&UartHandle) != HAL_OK) // в т.ч. разрешение прерывания и только по передаче
   {
     Error_Handler();
   }
