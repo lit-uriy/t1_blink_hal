@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    Templates/Inc/stm32f0xx_it.h 
+  * @file    UART/UART_TwoBoards_ComIT/Inc/stm32f0xx_it.h 
   * @author  MCD Application Team
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
@@ -36,6 +36,8 @@ void HardFault_Handler(void);
 void SVC_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
+void USARTx_IRQHandler(void);
+void EXTI4_15_IRQHandler(void);
 
 #ifdef __cplusplus
 }
