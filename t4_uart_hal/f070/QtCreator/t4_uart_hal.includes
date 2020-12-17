@@ -175,3 +175,4 @@
 ../../../Drivers/CMSIS/DSP/DSP_Lib_TestSuite/Common/inc/fast_math_tests
 ../../../Drivers/CMSIS/DSP/Source/CommonTables
 ../../../Drivers/CMSIS/NN/NN_Lib_Tests/nn_test/Ref_Implementations
+../Src
